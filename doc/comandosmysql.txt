@@ -1,0 +1,63 @@
+Obs.: No repositorio do Debian é disponibilizado o MariaDB, então ele está sendo utilizado. Por ser um fork do MySQL, ele é compativel.
+
+
+CREATE USER 'test'@'%' IDENTIFIED BY 'cerejinha123'; 			---% - rede / localhost 
+
+GRANT ALL PRIVILEGES ON *.* TO 'test'@'%'				---da previlegios para o novo usuario
+
+UPDATE mysql.user SET plugin = 'mysql_native_password', authentication_string = PASSWORD('cerejinha123') WHERE User = 'test';   ---atualiza plugin de autenticação
+
+FLUSH PRIVILEGES;    							---?? atualiza valores das tabelas modificadas
+
+SELECT user,authentication_string,plugin,host FROM mysql.user;		---mostra usuarios
+
+DROP USER 'test'@'localhost';						---exclui um usuario
+
+
+Para o acesso remoto da "tabela" sql, foi necessario criar um novo usuario e para conseguir o acesso pela rede a linha "bind-address=127.0.0.1" foi comentada em /etc/mysql/mariadb.conf.d/50-server.cnf
+
+---
+
+Comando usados para a criação das "tabelas" do mysql
+
+create table pessoas(
+id int not null auto_increment,
+nome varchar(30) not null,
+rg varchar(9) not null,
+ra varchar(13) not null,
+primary key(id)
+)default charset=utf8;
+
+create table controle(ra varchar(13), datas datetime)default charset=utf8;
+
+---
+
+insert into pessoas
+(nome, rg, ra)
+values
+('TEST4', md5('1'), md5('1'));
+
+select * from pessoas;
+
+desc pessoas;
+
+alter table pessoas
+add UNIQUE (ra);
+
+
+
+select * from controle;
+
+select date_format(datas, "%d/%l/%Y %H:%i:%s") from controle;
+
+delete from controle where ra=1;
+
+insert into controle(ra,datas) values('1',current_timestamp());
+
+
+--------------------------------------------------------------
+
+https://www.digitalocean.com/community/tutorials/how-to-install-mysql-on-ubuntu-18-04
+https://linuxize.com/post/how-to-create-mysql-user-accounts-and-grant-privileges/
+
+https://stackoverflow.com/questions/14779104/how-to-allow-remote-connection-to-mysql

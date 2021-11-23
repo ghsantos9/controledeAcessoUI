@@ -1,0 +1,9 @@
+NOME DA PESSOA
+901111111			RG 9 Numeros
+1301111111111			RA 13 Numero
+
+
+No final de cada linha tem o "\r\n"
+
+Sendo:
+NOMEDAPESSOAEMMAIUSCULO\r\nRG\r\nRA

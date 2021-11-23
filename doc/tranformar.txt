@@ -1,0 +1,2 @@
+tranformar ui para python
+pyuic5 -x controledeAcesso.ui -o controledeAcessoUI.py
