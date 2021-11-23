@@ -1,5 +1,10 @@
 # controledeAcessoUI - Laboratório Maker - Python3
 
+Bruno Silva de Araujo      | bruno.araujo37@fatec.sp.gov.br
+Gustavo Henrique Santos    | gustavo.santos173@fatec.sp.gov.br
+Renan Andrade de Morais    | renan.morais5@fatec.sp.gov.br
+Thainá Cristina Peres Cota | thaina.cota@fatec.sp.gov.br
+
 Projeto do 4° Semestre de Manufatura Avançada propondo um sistema de controle de acesso para um laboratório baseando-se na leitura de códigos qr presentes na carteirinha de estudante, utilizando pyzbar e pyqt5 juntamente com um servidor sql.
 
 requisitos:
